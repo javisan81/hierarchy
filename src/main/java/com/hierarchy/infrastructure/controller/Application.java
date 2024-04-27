@@ -1,4 +1,4 @@
-package com.hierarchy.infrastructure;
+package com.hierarchy.infrastructure.controller;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
