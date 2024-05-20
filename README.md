@@ -57,4 +57,4 @@ about who their boss is. Can you help her?
    the name of the supervisor and the name of the supervisor’s supervisor in return.
 
 4. I would like the API to be secure so that only I can use it. Please implement some kind of
-   authentication.
+   authentication
