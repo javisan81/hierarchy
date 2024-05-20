@@ -21,6 +21,10 @@ public class HierarchyController {
     @PostMapping("/hierarchy")
     public String generateHierarchy(@RequestBody Map<String, String> employeesSupervisors) {
         Hierarchy hierarchy= hierarchyUseCase.build(new EmployeesSupervisors(employeesSupervisors));
+        return toJson(hierarchy);
+    }
+
+    private static String toJson(Hierarchy hierarchy) {
         if (hierarchy.isEmpty()) {
             return "{}";
         }
