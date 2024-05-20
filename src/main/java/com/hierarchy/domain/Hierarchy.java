@@ -8,4 +8,14 @@ public class Hierarchy {
         this.supervisor = supervisor;
         this.hierarchy = hierarchy;
     }
+
+    public boolean isEmpty() {
+        return supervisor==null && hierarchy==null;
+    }
+
+    public boolean isEmployee(String employee) {
+        if(hierarchy==null)
+            return false;
+        return hierarchy.supervisor.equals(employee);
+    }
 }

@@ -1,5 +1,7 @@
 package com.hierarchy.infrastructure.controller.controller;
 
+import com.hierarchy.domain.EmployeesSupervisors;
+import com.hierarchy.domain.Hierarchy;
 import com.hierarchy.services.HierarchyUseCase;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,10 +20,11 @@ public class HierarchyController {
 
     @PostMapping("/hierarchy")
     public String generateHierarchy(@RequestBody Map<String, String> employeesSupervisors) {
-        if (employeesSupervisors.isEmpty()) {
+        Hierarchy hierarchy= hierarchyUseCase.build(new EmployeesSupervisors(employeesSupervisors));
+        if (hierarchy.isEmpty()) {
             return "{}";
         }
-        if (employeesSupervisors.get("Juan") != null) {
+        if (hierarchy.isEmployee("Juan")) {
             return "{\"Pete\":{\"Juan\":{}}";
         }
 
