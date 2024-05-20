@@ -1,6 +1,8 @@
 package com.hierarchy.infrastructure.controller;
 
 import com.hierarchy.Application;
+import com.hierarchy.domain.EmployeesSupervisors;
+import com.hierarchy.domain.Hierarchy;
 import com.hierarchy.services.HierarchyUseCase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +16,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.HashMap;
+
+import static org.mockito.Mockito.when;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
@@ -25,6 +31,7 @@ public class HierarchyControllerIT {
 
     @Test
     public void emptyHierarchy() throws Exception {
+        when(hierarchyUseCase.build(new EmployeesSupervisors(new HashMap<>()))).thenReturn(new Hierarchy(null, null));
         mockMvc.perform(MockMvcRequestBuilders.post("/hierarchy")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}")
