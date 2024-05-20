@@ -21,7 +21,7 @@ public class HierarchyController {
         if (employeesSupervisors.isEmpty()) {
             return "{}";
         }
-        if (employeesSupervisors.get("Pete") != null) {
+        if (employeesSupervisors.get("Juan") != null) {
             return "{\"Pete\":{\"Juan\":{}}";
         }
 

@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.mockito.Mockito.when;
 
@@ -57,9 +58,12 @@ public class HierarchyControllerIT {
 
     @Test
     void oneEmployeeOneSupervisor() throws Exception {
+        Hierarchy employee = new Hierarchy("Juan", null);
+        when(hierarchyUseCase.build(new EmployeesSupervisors(Map.of("Juan","Pete")))).thenReturn(new Hierarchy("Pete", employee));
+
         mockMvc.perform(MockMvcRequestBuilders.post("/hierarchy")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"Pete\":\"Juan\"}")
+                        .content("{\"Juan\":\"Pete\"}")
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("{\"Pete\":{\"Juan\":{}}"));
