@@ -42,6 +42,11 @@ public class HierarchyControllerIT {
 
     @Test
     void oneEmployeeHierarchy() throws Exception {
+        HashMap<String, String> employeeSupervisors = new HashMap<>();
+        employeeSupervisors.put("Pete", null);
+
+        when(hierarchyUseCase.build(new EmployeesSupervisors(employeeSupervisors))).thenReturn(new Hierarchy("Pete", null));
+
         mockMvc.perform(MockMvcRequestBuilders.post("/hierarchy")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"Pete\":null}")
