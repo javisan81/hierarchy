@@ -10,11 +10,11 @@ import java.util.Map;
 public class HierarchyController {
 
     @PostMapping("/hierarchy")
-    public String generateHierarchy(@RequestBody Map<String, String> employeesSupervisors){
-        if(employeesSupervisors.isEmpty()) {
+    public String generateHierarchy(@RequestBody Map<String, String> employeesSupervisors) {
+        if (employeesSupervisors.isEmpty()) {
             return "{}";
         }
-        if(employeesSupervisors.get("Pete")!=null){
+        if (employeesSupervisors.get("Pete") != null) {
             return "{\"Pete\":{\"Juan\":{}}";
         }
 
