@@ -27,6 +27,16 @@ public class HierarchyControllerIT {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("{}"));
     }
+
+    @Test
+    void oneEmployeeHierarchy() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/hierarchy")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"Pete\":null}")
+                )
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("{\"Pete\":{}}"));
+    }
 }
 
 

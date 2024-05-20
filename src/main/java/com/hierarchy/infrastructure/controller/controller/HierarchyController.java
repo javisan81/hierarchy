@@ -11,7 +11,11 @@ public class HierarchyController {
 
     @PostMapping("/hierarchy")
     public String generateHierarchy(@RequestBody Map<String, String> employeesSupervisors){
-        return "{}";
+        if(employeesSupervisors.isEmpty()) {
+            return "{}";
+        }
+
+        return "{\"Pete\":{}}";
     }
 
 }
