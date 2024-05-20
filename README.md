@@ -1,4 +1,4 @@
-# Hierachy
+# Hierarchy
 
 Help HR manager Fatima get a grasp of her ever-changing company’s hierarchy!
 Every week Fatima receives a JSON of employees and their supervisors from her demanding CEO Chris,
